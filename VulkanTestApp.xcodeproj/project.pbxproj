@@ -14,6 +14,8 @@
 		3CAFEEC72192546F0093B84B /* libvulkan.1.1.85.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C867F8421923A010033F3DC /* libvulkan.1.1.85.dylib */; };
 		3CAFEEC82192547B0093B84B /* libvulkan.1.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3C867F8821923AB30033F3DC /* libvulkan.1.dylib */; };
 		3CAFEEC92192547B0093B84B /* libvulkan.1.1.85.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3C867F8421923A010033F3DC /* libvulkan.1.1.85.dylib */; };
+		3CAFEECB21925EFD0093B84B /* makeMetalView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3CAFEECA21925EFD0093B84B /* makeMetalView.mm */; };
+		3CAFEECD2192602D0093B84B /* Metal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CAFEECC2192602D0093B84B /* Metal.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -37,6 +39,8 @@
 		3C867F8421923A010033F3DC /* libvulkan.1.1.85.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libvulkan.1.1.85.dylib; sourceTree = "<group>"; };
 		3C867F8621923A460033F3DC /* libglfw.3.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libglfw.3.2.dylib; path = /opt/local/lib/libglfw.3.2.dylib; sourceTree = "<absolute>"; };
 		3C867F8821923AB30033F3DC /* libvulkan.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libvulkan.1.dylib; sourceTree = "<group>"; };
+		3CAFEECA21925EFD0093B84B /* makeMetalView.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = makeMetalView.mm; sourceTree = "<group>"; };
+		3CAFEECC2192602D0093B84B /* Metal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Metal.framework; path = System/Library/Frameworks/Metal.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -44,6 +48,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3CAFEECD2192602D0093B84B /* Metal.framework in Frameworks */,
 				3CAFEEC52192546F0093B84B /* libglfw.3.2.dylib in Frameworks */,
 				3CAFEEC62192546F0093B84B /* libvulkan.1.dylib in Frameworks */,
 				3CAFEEC72192546F0093B84B /* libvulkan.1.1.85.dylib in Frameworks */,
@@ -74,6 +79,7 @@
 			isa = PBXGroup;
 			children = (
 				3C867F7C21921CD90033F3DC /* main.cpp */,
+				3CAFEECA21925EFD0093B84B /* makeMetalView.mm */,
 			);
 			path = VulkanTestApp;
 			sourceTree = "<group>";
@@ -81,6 +87,7 @@
 		3CAFEEC4219254380093B84B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3CAFEECC2192602D0093B84B /* Metal.framework */,
 				3C867F8621923A460033F3DC /* libglfw.3.2.dylib */,
 				3C867F8821923AB30033F3DC /* libvulkan.1.dylib */,
 				3C867F8421923A010033F3DC /* libvulkan.1.1.85.dylib */,
@@ -144,6 +151,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3CAFEECB21925EFD0093B84B /* makeMetalView.mm in Sources */,
 				3C867F7D21921CD90033F3DC /* main.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -160,7 +168,7 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_ARC = NO;
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
@@ -194,6 +202,7 @@
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
+					"BUILD_FOR_MAC=1",
 					"$(inherited)",
 				);
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -230,7 +239,7 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_ARC = NO;
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
@@ -260,7 +269,10 @@
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREPROCESSOR_DEFINITIONS = "NDEBUG=1";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"NDEBUG=1",
+					"BUILD_FOR_MAC=1",
+				);
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
